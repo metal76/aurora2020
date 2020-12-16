@@ -75,26 +75,27 @@ let SteeringPatrolScene = new Phaser.Class({
         this.characterFactory = new CharacterFactory(this);
 
         // Creating characters
-        this.player = this.characterFactory.buildCharacter('aurora', 100, 100, {player: true});
+        this.player = this.characterFactory
+            .buildCharacter('aurora', 100, 100, {player: true});
         this.player.setVelocityX(50);
         this.gameObjects.push(this.player);
         this.physics.add.collider(this.player, worldLayer);
         this.npcGroup =  this.physics.add.group();
         let params = {};
 
-        for(let i = 0; i < 10; i++) {
+        for(let i = 0; i < 1; i++) {
 
             const x = Phaser.Math.RND.between(50, this.physics.world.bounds.width - 50 );
             const y = Phaser.Math.RND.between(50, this.physics.world.bounds.height -50 );
-            /*this.nps1 = this.characterFactory.buildCharacter('green', x, y);
-            this.nps1.steering = new PatrollingLeftRight(this.nps1);*/
-            this.nps1 = this.characterFactory.buildCharacter('green', x, y, {Steering: new PatrollingLeftRight(this)});
-            this.npcGroup.add(nps1);
-            this.physics.add.collider(nps1, worldLayer);
-            this.gameObjects.push(nps1);
-            this.physics.add.collider(nps1, this.player);
+            const npc1 = this.characterFactory
+                .buildCharacter('green', x, y,
+                    {Steering: new PatrollingLeftRight(this)});
+            this.npcGroup.add(npc1);
+            this.physics.add.collider(npc1, worldLayer);
+            this.gameObjects.push(npc1);
+            this.physics.add.collider(npc1, this.player);
         }
-        this.physics.add.collider(this.player, this.slimes);
+        //this.physics.add.collider(this.player, this.slimes);
 
         this.input.keyboard.once("keydown_D", event => {
             // Turn on physics debugging to show player's hitbox
