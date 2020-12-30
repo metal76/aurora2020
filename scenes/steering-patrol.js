@@ -12,6 +12,7 @@ import CharacterFactory from "../src/characters/character_factory";
 import Footsteps from "../assets/audio/footstep_ice_crunchy_run_01.wav";
 
 import PatrollingLeftRight from "../src/ai/steerings/patrollingLeftRight"
+import PatrollingUpDown from "../src/ai/steerings/patrollingUpDown"
 console.log('HI');
 let SteeringPatrolScene = new Phaser.Class({
 
@@ -83,13 +84,28 @@ let SteeringPatrolScene = new Phaser.Class({
         this.npcGroup =  this.physics.add.group();
         let params = {};
 
-        for(let i = 0; i < 1; i++) {
+        for(let i = 0; i < 3; i++) {
 
             const x = Phaser.Math.RND.between(50, this.physics.world.bounds.width - 50 );
             const y = Phaser.Math.RND.between(50, this.physics.world.bounds.height -50 );
+            console.log(x, y);
             const npc1 = this.characterFactory
                 .buildCharacter('green', x, y,
-                    {Steering: new PatrollingLeftRight(this)});
+                    {Steering: new PatrollingLeftRight(this,null,x,y)});
+            this.npcGroup.add(npc1);
+            this.physics.add.collider(npc1, worldLayer);
+            this.gameObjects.push(npc1);
+            this.physics.add.collider(npc1, this.player);
+        }
+
+        for(let i = 0; i < 3; i++) {
+
+            const x = Phaser.Math.RND.between(50, this.physics.world.bounds.width - 50 );
+            const y = Phaser.Math.RND.between(50, this.physics.world.bounds.height -50 );
+            console.log(x, y);
+            const npc1 = this.characterFactory
+                .buildCharacter('green', x, y,
+                    {Steering: new PatrollingUpDown(this,null,x,y)});
             this.npcGroup.add(npc1);
             this.physics.add.collider(npc1, worldLayer);
             this.gameObjects.push(npc1);

@@ -58,7 +58,6 @@ export default class CharacterFactory {
 
     buildNPCCharacter(spriteSheetName, x, y, params) {
         let character = new NPC(this.scene, x, y, spriteSheetName, 2, params.Steering);
-        console.log(params.Steering)
         character.animationSets = this.animationLibrary.get(spriteSheetName);
         return character;
 
