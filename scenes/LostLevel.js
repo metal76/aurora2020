@@ -1,6 +1,6 @@
 import EasyStar from "easystarjs";
 import tilemapPng from '../assets/tileset/Dungeon_Tileset.png'
-import crystalTilemapPng from '../assets/tileset/Crystal_tileset.png'
+import forest_tileset from '../assets/tileset/forest_tileset.png'
 import auroraSpriteSheet from '../assets/sprites/characters/aurora.png'
 import punkSpriteSheet from '../assets/sprites/characters/punk.png'
 import blueSpriteSheet from '../assets/sprites/characters/blue.png'
@@ -54,7 +54,7 @@ let LostLevelScene = new Phaser.Class({
         
         //loading map tiles and json with positions
         this.load.image("tiles", tilemapPng);
-        this.load.image("crystals", crystalTilemapPng);
+        this.load.image("crystals", forest_tileset);
         this.load.image("gun", gunPng);
         this.load.image("bullet", bulletPng);
         this.load.image("spell", spellPng);
