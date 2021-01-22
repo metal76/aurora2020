@@ -32,6 +32,6 @@ export default class Chase extends Steering {
             const curVelocity = new Vector2(this.owner.body.x - this.owner.body.prev.x, this.owner.body.y - this.owner.body.prev.y);
             return desiredVelocity.subtract(curVelocity);
         }
-        return null;
+        return new Vector2(0, 0);
     }
 }

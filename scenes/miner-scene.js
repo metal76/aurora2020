@@ -79,7 +79,8 @@ let MinerScene = new Phaser.Class({
         this.characterFactory = new CharacterFactory(this);
 
         // Creating characters
-        this.player = this.characterFactory.buildCharacter('punk', 100, 100, {player: true});
+        this.player = this.characterFactory.buildCharacter('punk',
+            100, 100, {player: true, abilities:['mines']});
         this.gameObjects.push(this.player);
         this.physics.add.collider(this.player, worldLayer);
 

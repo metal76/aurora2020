@@ -1,4 +1,3 @@
-const delay = 1000;
 export default class Npc extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, name, frame, steering) {
         super(scene, x, y, name, frame);
@@ -8,7 +7,18 @@ export default class Npc extends Phaser.Physics.Arcade.Sprite {
         this.cnt = 0;
     }
 
+    setAI(ai, initialState)
+    {
+        this.ai = ai;
+        this.currentState = initialState;
+    }
     update() {
+        if (this.ai)
+        {
+          this.currentState = this.ai.update(this.currentState);
+        }
+        const delay = 500;
+        this.body.setVelocity(0);
         if (this.steering) {
             const dir = this.steering.calculateImpulse(!this.cntLess(delay));
             this.body.setVelocityX(dir.x)
@@ -16,10 +26,13 @@ export default class Npc extends Phaser.Physics.Arcade.Sprite {
             this.cnt = this.cntLess(delay) ? this.cnt + 1 : 0;
         }
         this.updateAnimation();
+
     }
 
     updateAnimation() {
         const animations = this.animationSets.get('Walk');
+
+
         const animsController = this.anims;
         const x = this.body.velocity.x;
         const y = this.body.velocity.y;
@@ -40,7 +53,6 @@ export default class Npc extends Phaser.Physics.Arcade.Sprite {
             }
         }
     }
-
     cntLess(steps) {
         return this.cnt < steps;
     }

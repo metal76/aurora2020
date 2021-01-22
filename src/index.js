@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 
-import MenuScene from '../scenes/scenes-menu'
+import MenuScene from '../scenes/scenes-menu';
 import CharacterMixin from '../src/characters/character.js';
 
 //https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/blob/master/examples/post-1/05-physics/index.js
@@ -11,7 +11,7 @@ const config = {
   width: 800,
   height: 600,
   pixelArt: true,
-  zoom: 1.2,
+  zoom: 1.1,
   scene: MenuScene,
   physics: {
     default: "arcade",

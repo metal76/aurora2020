@@ -15,7 +15,6 @@
   "dependencies": {
     "characters": "0.0.2",
     "easystarjs": "^0.4.3",
-    "matter": "^0.2.0",
     "phaser": "^3.20.1"
   }
 }
