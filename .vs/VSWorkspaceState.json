@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\assets",
+    "\\phaser-test"
   ],
   "PreviewInSolutionExplorer": false
 }
